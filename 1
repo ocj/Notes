@@ -1,0 +1,22 @@
+		List<BizGuaranteeReach> reachList = dao.findReachApplyMList(bizGuaranteeReach);
+		for (Iterator<BizGuaranteeReach> iterator = reachList.iterator(); iterator.hasNext();) {
+			BizGuaranteeReach next = iterator.next();
+			if (StringUtils.equals(next.getRepayState(), "1")) {
+				next.setRepayStateName("已申请");
+			} else if (StringUtils.equals(next.getRepayState(), "2")) {
+				next.setRepayStateName("已发送");
+			} else if (StringUtils.equals(next.getRepayState(), "3")) {
+				next.setRepayStateName("审核通过");
+			} else if (StringUtils.equals(next.getRepayState(), "7")) {
+				next.setRepayStateName("已确认");
+			}
+		}
+    
+    
+    
+    			//审核状态
+			if(StringUtils.equals(reach.getRepayState(), "1")){
+				reach.setRepayStateName("申请状态");
+			}else if(StringUtils.equals(reach.getRepayState(), "2")){
+				reach.setRepayStateName("已确认");
+			}
