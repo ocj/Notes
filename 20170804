@@ -1,0 +1,20 @@
+//点击超链接
+function autoTable_hyberlinkClick(arg1,arg2){
+	var rowData = autoTable_getSelectedRowByChild($(arg2));
+	var index = $(arg2).parent().index();
+	var title = $("table tr th:eq("+index+")").html();
+	var returnUrl="/agc/reminder/indexExpiraPage";
+	if(title == "项目编号"){
+		$.get(ctx+'/acc/prj/getProjectStatus?projectId='+rowData.projectId,function(data){
+			if(data.businessType == "financeLease"){
+				window.location.href = ctx+"/acc/prj/viewPrjInfo?projectId="+rowData.projectId+"&return_url="+returnUrl;
+			}else if(data.businessType == "pettyLoan"){
+				window.location.href = ctx+"/acc/loan/view?projectId="+rowData.projectId+"&return_url="+returnUrl;
+			}else if(data.businessType == "pawn"){
+				window.location.href = ctx+"/acc/pawn/view?projectId="+rowData.projectId+"&return_url="+returnUrl;
+			}else if(data.businessType == "guarantee"){
+				window.location.href = ctx+"/acc/gua/view?projectId="+rowData.projectId+"&return_url="+returnUrl;
+			}
+		});
+	}
+}
