@@ -1,0 +1,1 @@
+		var risk_editors = CKEDITOR.replace('risk_view_content',{ toolbarCanCollapse: false, toolbarStartupExpanded: false});
